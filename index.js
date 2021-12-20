@@ -4,10 +4,11 @@ const sequelize = require('./middleware/database.js')
 const bodyParser = require('body-parser');
 
 const userRoutes = require('./routes/user.js');
-const tournamentsRoutes = require('./routes/tournamentsRoutes.js');
-const teamRoutes = require('./routes/teamRoutes.js');
+const tournamentsRoutes = require('./routes/tournaments.js');
+const teamRoutes = require('./routes/team.js');
+const teamsRoutes = require('./routes/teams.js');
 
-const authenticate = require('./middleware/authentication.js');
+// const authenticate = require('./middleware/authentication.js');
 
 const app = express();
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 app.use('/user', userRoutes);
 app.use('/tournaments', tournamentsRoutes);
 app.use('/team', teamRoutes);
+app.use('/teams', teamsRoutes);
 
 app.listen(PORT, async () => {
     console.log(`Server started on http://localhost:${PORT}/`);

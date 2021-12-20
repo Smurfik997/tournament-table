@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../middleware/database.js');
 
 const Tournament = require('./tournament.js');
-const TournamentMember = require('./tournament_member.js');
+const Team = require('./team.js');
 
 const TournamentMatchup = sequelize.define('tournament_matchups', {
   	id: {
@@ -20,13 +20,13 @@ const TournamentMatchup = sequelize.define('tournament_matchups', {
   	}, team1_id: {
 		type: DataTypes.INTEGER(10).UNSIGNED,
 		references: {
-			model: TournamentMember,
+			model: Team,
 			key: 'team_id'
 		}
   	}, team2_id: {
 		type: DataTypes.INTEGER(10).UNSIGNED,
 		references: {
-			model: TournamentMember,
+			model: Team,
 			key: 'team_id'
 		}
   	}, stage: {
@@ -41,7 +41,7 @@ const TournamentMatchup = sequelize.define('tournament_matchups', {
     }, winner: {
 		type: DataTypes.INTEGER(10).UNSIGNED,
 		references: {
-			model: TournamentMember,
+			model: Team,
 			key: 'team_id'
 		}
   	}

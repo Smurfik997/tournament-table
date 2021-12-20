@@ -1,4 +1,4 @@
-const { DataTypes, Deferrable } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../middleware/database.js');
 
 const Team = require('./team.js');

@@ -1,12 +1,22 @@
 const sequelize = require('../middleware/database.js');
 const Team = require('../models/team.js');
 const TeamMember = require('../models/team_member.js');
+const TournamentMember = require('../models/tournament_member.js');
+const PAGE_RECORDS_LIMIT = 10;
+
+const getTeamByID = async (req) => {
+    if (req.user) {
+        return await Team.findOne({ where: { id: req.params.id, manager_id: req.user.id } });
+    } else {
+        return await Team.findOne(
+            { where: { id: req.params.id, visible: 1 }, attributes: { exclude: ['visible'] } }
+        );
+    }
+}
 
 const viewTeamProfile = async (req, res) => {
-    const id = req.params.id;
-
     try {
-        const team = await Team.findOne({ where: { id, visible: 1 } });
+        const team = await getTeamByID(req);
 
         if (team) {
             res.status(200).json({ team });
@@ -18,18 +28,43 @@ const viewTeamProfile = async (req, res) => {
     }
 };
 
-const getTeamMembers = async (req, res) => {
-    const id = req.params.id;
+const getAllTeams = async (req, res) => {
+    const page_id = parseInt(req.params.page_id || 1);
+    if (Number.isNaN(page_id) || page_id < 1) {
+        res.status(400).json({ error: 'invalid page number' });
+        return;
+    }
+    const offset = (page_id - 1) * PAGE_RECORDS_LIMIT;
 
     try {
-        const team = await Team.findOne({ where: { id, visible: 1 } });
+        const teams = req.user? await Team.findAll(
+            { where: { manager_id: req.user.id }, offset, limit: PAGE_RECORDS_LIMIT }
+        ) : await Team.findAll(
+            { where: { visible: 1 }, offset, limit: PAGE_RECORDS_LIMIT, attributes: { exclude: ['visible'] } }
+        );
+
+        if (teams) {
+            res.status(200).json({ teams });
+        } else {
+            res.status(404).json({ error: 'page is empty' });
+        }
+    } catch(error) {
+        res.status(500).json({ error });
+    }
+};
+
+const getTeamMembers = async (req, res) => {
+    try {
+        const team = await getTeamByID(req);
 
         if (!team) {
             res.status(404).json({ error: 'team not found' });
             return;
         }
 
-        const team_members = await TeamMember.findAll({ where: { team_id: id }, attributes: ['user_id'] });
+        const team_members = await TeamMember.findAll(
+            { where: { team_id: req.params.id }, attributes: ['user_id'] }
+        );
 
         if (team_members) {
             res.status(200).json({ team_members });
@@ -43,6 +78,12 @@ const getTeamMembers = async (req, res) => {
 
 const createTeam = async (req, res) => {
     const { team_name, member_ids } = req.body;
+
+    if (!team_name || !member_ids) {
+        res.status(400).json({ error: 'team_name, member_ids fields are requiered' });
+        return await transaction.rollback();
+    }
+
     const transaction = await sequelize.transaction();
 
     try {
@@ -50,7 +91,7 @@ const createTeam = async (req, res) => {
 
         if (existing_team) {
             res.status(400).json({ error: 'name of team must be unique' });
-            return;
+            return await transaction.rollback();
         }
 
         const team = await Team.create({ team_name, manager_id: req.user.id }, { transaction });
@@ -68,4 +109,32 @@ const createTeam = async (req, res) => {
     }
 };
 
-module.exports = { viewTeamProfile, getTeamMembers, createTeam };
+const deleteTeam = async (req, res) => {
+    const transaction = await sequelize.transaction();
+
+    try {
+        const existing_team = await getTeamByID(req);
+
+        if (!existing_team) {
+            res.status(404).json({ error: 'team not found' });
+            return await transaction.rollback();
+        }
+
+        if (!await TournamentMember.findAll({ where: { team_id: req.params.id } })) {
+            res.status(400).json({ error: 'team is member of tournaments' });
+            return await transaction.rollback();
+        }
+
+        await TeamMember.destroy({ where: { team_id: req.params.id }, transaction });
+        await existing_team.destroy({ transaction });
+
+        await transaction.commit();
+
+        res.status(200).json({ team: { id: req.params.id } });
+    } catch (error) {
+        await transaction.rollback();
+        res.status(500).json({ error });
+    }
+};
+
+module.exports = { viewTeamProfile, getTeamMembers, createTeam, deleteTeam, getAllTeams, getTeamByID };

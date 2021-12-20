@@ -13,6 +13,11 @@ const SECRET_KEY = process.env.SECRET_KEY;
 const signin = async (req, res) => {
     const { username, password } = req.body;
 
+    if (!username || !password) {
+        res.status(400).json({ error: 'username, password fields are requiered' });
+        return;
+    }
+
     try {
         const existing_user = await User.findOne({ where: { username } });
 
@@ -35,6 +40,12 @@ const signin = async (req, res) => {
 
 const signup = async (req, res) => {
     const { username, password, first_name, last_name } = req.body;
+
+    if (!username || !password || !first_name || !last_name) {
+        res.status(400).json({ error: 'username, password, first_name, last_name fields are requiered' });
+        return;
+    }
+
     const transaction = await sequelize.transaction();
 
     try {
@@ -42,7 +53,7 @@ const signup = async (req, res) => {
 
         if (existing_user) {
             res.status(400).json({ error: 'username must be unique' });
-            return;
+            return await transaction.rollback();
         }
 
         const password_hash = await bcrypt.hash(password, 12);
