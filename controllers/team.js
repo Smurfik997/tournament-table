@@ -1,8 +1,7 @@
 const sequelize = require('../middleware/database.js');
-const Team = require('../models/team.js');
-const TeamMember = require('../models/team_member.js');
-const TournamentMember = require('../models/tournament_member.js');
 const PAGE_RECORDS_LIMIT = 10;
+
+const { Team, TeamMember, TournamentMember } = require('../models/main.js');
 
 const getTeamByID = async (req) => {
     if (req.user) {
@@ -62,9 +61,7 @@ const getTeamMembers = async (req, res) => {
             return;
         }
 
-        const team_members = await TeamMember.findAll(
-            { where: { team_id: req.params.id }, attributes: ['user_id'] }
-        );
+        const team_members = await team.getMembers({ attributes: ['user_id'] });
 
         if (team_members) {
             res.status(200).json({ team_members });
@@ -81,7 +78,7 @@ const createTeam = async (req, res) => {
 
     if (!team_name || !member_ids) {
         res.status(400).json({ error: 'team_name, member_ids fields are requiered' });
-        return await transaction.rollback();
+        return;
     }
 
     const transaction = await sequelize.transaction();
@@ -125,9 +122,7 @@ const deleteTeam = async (req, res) => {
             return await transaction.rollback();
         }
 
-        await TeamMember.destroy({ where: { team_id: req.params.id }, transaction });
         await existing_team.destroy({ transaction });
-
         await transaction.commit();
 
         res.status(200).json({ team: { id: req.params.id } });

@@ -1,8 +1,7 @@
 const sequelize = require('../middleware/database.js');
 
-const Tournament = require('../models/tournament.js');
-const TournamentMember = require('../models/tournament_member.js');
-const TournamentMatchup = require('../models/tournament_matchup.js');
+const { Tournament, TournamentMember, TournamentMatchup } = require('../models/main.js');
+
 const { getTeamByID } = require('./team.js');
 const PAGE_RECORDS_LIMIT = 10;
 
@@ -64,9 +63,7 @@ const getTournamentMembers = async (req, res) => {
             return;
         }
 
-        const tournament_members = await TournamentMember.findAll({ 
-            where: { tournament_id: req.params.tournament_id }, attributes: ['team_id'] }
-        );
+        const tournament_members = await tournament.getMembers({ attributes: ['team_id'] });
 
         if (tournament_members) {
             res.status(200).json({ tournament_members });
@@ -79,8 +76,6 @@ const getTournamentMembers = async (req, res) => {
 }
 
 const getTournamentMatchups = async (req, res) => {
-    const tournament_id = req.params.tournament_id;
-
     try {
         const tournament = await getTournamentByID(req);
 
@@ -89,9 +84,10 @@ const getTournamentMatchups = async (req, res) => {
             return;
         }
 
-        const tournament_matchups = await TournamentMatchup.findAll({ 
-            where: { tournament_id }, attributes: { exclude: ['tournament_id'] } }
+        const tournament_matchups = await tournament.getMatchups(
+            { attributes: { exclude: ['tournament_id'] } }
         );
+
         if (tournament_matchups) {
             res.status(200).json({ tournament_matchups });
         } else {
@@ -107,7 +103,7 @@ const createTournament = async (req, res) => {
 
     if (!name || !date_start || !date_end || !member_ids) {
         res.status(400).json({ error: 'name, date_start, date_end, member_ids fields are requiered' });
-        return await transaction.rollback();
+        return;
     }
 
     const transaction = await sequelize.transaction();
@@ -156,10 +152,7 @@ const deleteTournament = async (req, res) => {
             return await transaction.rollback();
         }
 
-        await TournamentMember.destroy({ where: { tournament_id }, transaction });
-        await TournamentMatchup.destroy({ where: { tournament_id }, transaction });
         await existing_tournament.destroy({ transaction });
-
         await transaction.commit();
 
         res.status(200).json({ team: { id: tournament_id } });

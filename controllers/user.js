@@ -1,11 +1,9 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-
-const User = require('../models/user.js');
-const UserRole = require('../models/user_role.js');
 const sequelize = require('../middleware/database.js');
-const Role = require('../models/role.js');
+
+const { User, UserRole, Role } = require('../models/main.js');
 
 dotenv.config();
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -26,7 +24,8 @@ const signin = async (req, res) => {
             return;
         }
 
-        const role = await UserRole.findOne({ where: { user_id: existing_user.id } });
+        const role = await existing_user.getRole();
+        console.log(role.role_id);
 
         const token = jwt.sign(
             { username, id: existing_user.id, role_id: role.role_id }, SECRET_KEY, { expiresIn: '1h' }
@@ -59,8 +58,8 @@ const signup = async (req, res) => {
         const password_hash = await bcrypt.hash(password, 12);
         const user = await User.create({ username, password_hash, first_name, last_name }, { transaction });
         const defaultRole = await Role.findOne({ where: { role_name: 'user' } }, { transaction });
+        
         await UserRole.create({ user_id: user.id, role_id: defaultRole.id }, { transaction });
-
         await transaction.commit();
 
         const token = jwt.sign(
