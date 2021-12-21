@@ -7,8 +7,7 @@ const userRoutes = require('./routes/user.js');
 const tournamentsRoutes = require('./routes/tournaments.js');
 const teamRoutes = require('./routes/team.js');
 const teamsRoutes = require('./routes/teams.js');
-
-// const authenticate = require('./middleware/authentication.js');
+const requestsRoutes = require('./routes/requests.js');
 
 const app = express();
 dotenv.config();
@@ -17,6 +16,9 @@ const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use('/user', userRoutes);
+app.use('/admin', (req, res, next) => { req.admin = 1; next(); }, userRoutes);
+app.use('/user/requests', (req, res, next) => { req.visible = 0; next(); }, requestsRoutes);
+app.use('/admin/requests', (req, res, next) => { req.visible = 0; req.admin = 1; next(); }, requestsRoutes);
 app.use('/tournaments', tournamentsRoutes);
 app.use('/team', teamRoutes);
 app.use('/teams', teamsRoutes);

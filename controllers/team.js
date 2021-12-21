@@ -5,7 +5,11 @@ const { Team, TeamMember, TournamentMember } = require('../models/main.js');
 
 const getTeamByID = async (req) => {
     if (req.user) {
-        return await Team.findOne({ where: { id: req.params.id, manager_id: req.user.id } });
+        if (!req.admin || !req.user.admin) {
+            return await Team.findOne({ where: { id: req.params.id, manager_id: req.user.id } });
+        } else {
+            return await Team.findOne({ where: { id: req.params.id } });
+        }
     } else {
         return await Team.findOne(
             { where: { id: req.params.id, visible: 1 }, attributes: { exclude: ['visible'] } }
@@ -36,11 +40,20 @@ const getAllTeams = async (req, res) => {
     const offset = (page_id - 1) * PAGE_RECORDS_LIMIT;
 
     try {
-        const teams = req.user? await Team.findAll(
-            { where: { manager_id: req.user.id }, offset, limit: PAGE_RECORDS_LIMIT }
-        ) : await Team.findAll(
-            { where: { visible: 1 }, offset, limit: PAGE_RECORDS_LIMIT, attributes: { exclude: ['visible'] } }
-        );
+        let where = {};
+
+        if (req.user) {
+            if (!req.admin || !req.user.admin) {
+                where.manager_id = req.user.id;
+            }
+
+            where.visible = req.visible != undefined? req.visible : 1;
+        } else {
+            where.visible = 1;
+            where.attributes = { exclude: ['visible'] };
+        }
+
+        const teams = await Team.findAll({ where, offset, limit: PAGE_RECORDS_LIMIT });
 
         if (teams) {
             res.status(200).json({ teams });
@@ -99,7 +112,7 @@ const createTeam = async (req, res) => {
 
         await transaction.commit();
 
-        res.status(201).json({ team });
+        res.status(201).json({ team: { id: team.id } });
     } catch (error) {
         await transaction.rollback();
         res.status(500).json({ error });

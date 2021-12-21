@@ -1,6 +1,9 @@
 const router = require('express').Router();
 
-const { signin, signup } = require('../controllers/user.js');
+const { signin, signup, getUserFullName } = require('../controllers/user.js');
+const { createTournament, deleteTournament } = require('../controllers/tournaments.js');
+const { createTeam, deleteTeam } = require('../controllers/team.js');
+
 const authenticate = require('../middleware/authentication.js');
 
 const tournamentRoutes = require('./tournaments.js');
@@ -9,8 +12,17 @@ const teamsRoutes = require('./teams.js');
 
 router.post('/signin', signin);
 router.post('/signup', signup);
+
+router.get('/:id', getUserFullName);
+
 router.use('/tournaments', authenticate, tournamentRoutes);
+router.post('/tournaments/create', authenticate, createTournament);
+router.delete('/tournaments/delete/:tournament_id', authenticate, deleteTournament);
+
 router.use('/team', authenticate, teamRoutes);
+router.post('/team/create', authenticate, createTeam);
+router.delete('/team/delete/:id', authenticate, deleteTeam);
+
 router.use('/teams', authenticate, teamsRoutes);
 
 module.exports = router;

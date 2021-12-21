@@ -12,7 +12,7 @@ const User = sequelize.define('user', {
 		allowNull: false,
 		unique: true,
 		validate: {
-			isAlphanumeric: true
+			is: /^[a-z]+[a-z_]*[a-z]+$/i
 		}
   	}, password_hash: {
 		type: DataTypes.CHAR(60),

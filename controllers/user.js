@@ -25,10 +25,9 @@ const signin = async (req, res) => {
         }
 
         const role = await existing_user.getRole();
-        console.log(role.role_id);
 
         const token = jwt.sign(
-            { username, id: existing_user.id, role_id: role.role_id }, SECRET_KEY, { expiresIn: '1h' }
+            { username, id: existing_user.id, role_id: role.role_id }, SECRET_KEY, { expiresIn: '24h' }
         );
 
         res.status(200).json({ token });
@@ -66,11 +65,27 @@ const signup = async (req, res) => {
             { username, id: user.id, role_id: defaultRole.id }, SECRET_KEY, { expiresIn: '1h' }
         );
 
-        res.status(201).json({ user, token });
+        res.status(201).json({ user: { id: user.id }, token });
     } catch(error) {
         await transaction.rollback();
         res.status(500).json({ error });
     }
 };
 
-module.exports = { signin, signup };
+const getUserFullName = async (req, res) => {
+    try {
+        const existing_user = await User.findOne(
+            { where: { id: req.params.id }, attributes: ['first_name', 'last_name'] }
+        );
+
+        if (existing_user) {
+            res.status(200).json({ existing_user });
+        } else {
+            res.status(404).json({ error: 'user doesn\'t exists' })
+        }
+    } catch(error) {
+        res.status(500).json({ error });
+    }
+}
+
+module.exports = { signin, signup, getUserFullName };

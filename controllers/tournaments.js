@@ -7,7 +7,13 @@ const PAGE_RECORDS_LIMIT = 10;
 
 const getTournamentByID = async (req) => {
     if (req.user) {
-        return await Tournament.findOne({ where: { manager_id: req.user.id, id: req.params.tournament_id } });
+        if (!req.admin || !req.user.admin) {
+            return await Tournament.findOne(
+                { where: { id: req.params.tournament_id, manager_id: req.user.id } }
+            );
+        } else {
+            return await Tournament.findOne({ where: { id: req.params.tournament_id } });
+        }
     } else {
         return await Tournament.findOne(
             { where: { visible: 1, id: req.params.tournament_id }, attributes: { exclude: ['visible'] } }
@@ -38,11 +44,20 @@ const getAllTournaments = async (req, res) => {
     const offset = (page_id - 1) * PAGE_RECORDS_LIMIT;
 
     try {
-        const tournaments = req.user? await Tournament.findAll(
-            { where: { manager_id: req.user.id }, offset, limit: PAGE_RECORDS_LIMIT }
-        ) : await Tournament.findAll(
-            { where: { visible: 1 }, offset, limit: PAGE_RECORDS_LIMIT, attributes: { exclude: ['visible'] } }
-        );
+        let where = {};
+
+        if (req.user) {
+            if (!req.admin || !req.user.admin) {
+                where.manager_id = req.user.id;
+            }
+
+            where.visible = req.visible != undefined? req.visible : 1;
+        } else {
+            where.visible = 1;
+            where.attributes = { exclude: ['visible'] };
+        }
+
+        const tournaments = await Tournament.findAll({ where, offset, limit: PAGE_RECORDS_LIMIT });
         
         if (tournaments) {
             res.status(200).json({ tournaments });
