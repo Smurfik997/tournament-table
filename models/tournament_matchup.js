@@ -32,6 +32,9 @@ const TournamentMatchup = sequelize.define('tournament_matchups', {
   	}, stage: {
         type: DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false
+    }, order_position: {
+        type: DataTypes.INTEGER(10).UNSIGNED,
+        allowNull: false
     }, date: {
         type: DataTypes.DATE,
 		validate: {

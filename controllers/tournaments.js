@@ -216,5 +216,5 @@ const acceptTournamentRequest = async (req, res) => {
 
 module.exports = { 
     getAllTournaments, getTournamentInfo, getTournamentMembers, getTournamentMatchups,
-    createTournament, deleteTournament, acceptTournamentRequest
+    createTournament, deleteTournament, acceptTournamentRequest, getTournamentByID
  };

@@ -20,7 +20,7 @@ Tournament.hasMany(TournamentMatchup, {
 
 Team.hasMany(TeamMember, { 
     as: 'members', sourceKey: 'id', foreignKey: 'team_id', onDelete: 'cascade', hooks: true
-})
+});
 
 module.exports = { 
     Role, TeamMember, Team, TournamentMatchup, TournamentMember, Tournament, UserRole, User
