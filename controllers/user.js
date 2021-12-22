@@ -74,12 +74,12 @@ const signup = async (req, res) => {
 
 const getUserFullName = async (req, res) => {
     try {
-        const existing_user = await User.findOne(
+        const user = await User.findOne(
             { where: { id: req.params.id }, attributes: ['first_name', 'last_name'] }
         );
 
-        if (existing_user) {
-            res.status(200).json({ existing_user });
+        if (user) {
+            res.status(200).json({ user });
         } else {
             res.status(404).json({ error: 'user doesn\'t exists' })
         }

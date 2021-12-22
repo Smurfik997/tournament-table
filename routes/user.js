@@ -9,11 +9,12 @@ const authenticate = require('../middleware/authentication.js');
 const tournamentRoutes = require('./tournaments.js');
 const teamRoutes = require('./team.js');
 const teamsRoutes = require('./teams.js');
+const requestsRoutes = require('./requests.js');
 
 router.post('/signin', signin);
 router.post('/signup', signup);
 
-router.get('/:id', getUserFullName);
+router.get('/id/:id', getUserFullName);
 
 router.use('/tournaments', authenticate, tournamentRoutes);
 router.post('/tournaments/create', authenticate, createTournament);
@@ -24,5 +25,7 @@ router.post('/team/create', authenticate, createTeam);
 router.delete('/team/delete/:id', authenticate, deleteTeam);
 
 router.use('/teams', authenticate, teamsRoutes);
+
+router.use('/requests', (req, res, next) => { req.visible = 0; next(); }, requestsRoutes);
 
 module.exports = router;

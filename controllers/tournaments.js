@@ -177,7 +177,29 @@ const deleteTournament = async (req, res) => {
     }
 };
 
+const acceptTournamentRequest = async (req, res) => {
+    if (!req.user.admin) {
+        res.status(404).json({ error: 'page not found' });
+        return;
+    }
+    
+    try {
+        const tournament = await getTournamentByID(req);
+
+        if (!tournament) {
+            res.status(404).json({ error: 'tournament not found' });
+            return;
+        }
+
+        await tournament.update({ visible: 1 });
+
+        res.status(200).json({ tournament });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
 module.exports = { 
     getAllTournaments, getTournamentInfo, getTournamentMembers, getTournamentMatchups,
-    createTournament, deleteTournament
+    createTournament, deleteTournament, acceptTournamentRequest
  };

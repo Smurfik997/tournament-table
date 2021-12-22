@@ -145,4 +145,28 @@ const deleteTeam = async (req, res) => {
     }
 };
 
-module.exports = { viewTeamProfile, getTeamMembers, createTeam, deleteTeam, getAllTeams, getTeamByID };
+const acceptTeamRequest = async (req, res) => {
+    if (!req.user.admin) {
+        res.status(404).json({ error: 'page not found' });
+        return;
+    }
+    
+    try {
+        const team = await getTeamByID(req);
+
+        if (!team) {
+            res.status(404).json({ error: 'team not found' });
+            return;
+        }
+
+        await team.update({ visible: 1 });
+
+        res.status(200).json({ team });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
+module.exports = { 
+    viewTeamProfile, getTeamMembers, createTeam, deleteTeam, getAllTeams, getTeamByID, acceptTeamRequest
+};
