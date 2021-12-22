@@ -1,6 +1,6 @@
 const TournamentMatchup = require('../models/tournament_matchup.js');
 const { getTournamentByID } = require('./tournaments.js');
-const { Op } = require('sequelize');
+const { Op, ValidationError } = require('sequelize');
 const sequelize = require('../middleware/database.js');
 
 const updateMatchupDate = async (req, res) => {
@@ -30,7 +30,11 @@ const updateMatchupDate = async (req, res) => {
 
         res.status(200).json({ matchup });
     } catch (error) {
-        res.status(500).json({ error });
+        if (error instanceof ValidationError) {
+            res.status(400).json({ error: 'invalid request data' });
+        } else {
+            res.status(500).json({ error });
+        }
     }
 };
 
@@ -101,7 +105,12 @@ const setWinner = async (req, res) => {
         }
     } catch (error) {
         await transaction.rollback();
-        res.status(500).json({ error });
+
+        if (error instanceof ValidationError) {
+            res.status(400).json({ error: 'invalid request data' });
+        } else {
+            res.status(500).json({ error });
+        }
     }
 }
 
@@ -156,7 +165,11 @@ const addMatchupOnFirstStage = async (req, res) => {
 
         res.json({ matchup });
     } catch (error) {
-        res.status(500).json({ error });
+        if (error instanceof ValidationError) {
+            res.status(400).json({ error: 'invalid request data' });
+        } else {
+            res.status(500).json({ error });
+        }
     }
 };
 

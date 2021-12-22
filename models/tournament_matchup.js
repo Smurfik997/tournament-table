@@ -41,9 +41,15 @@ const TournamentMatchup = sequelize.define('tournament_matchups', {
 			isDate: true
 		}
     }, team1_score: {
-        type: DataTypes.INTEGER(10).UNSIGNED
+        type: DataTypes.INTEGER(10).UNSIGNED,
+		validate: {
+			isInt: true
+		}
     }, team2_score: {
-        type: DataTypes.INTEGER(10).UNSIGNED
+        type: DataTypes.INTEGER(10).UNSIGNED,
+		validate: {
+			isInt: true
+		}
     }, winner: {
 		type: DataTypes.INTEGER(10).UNSIGNED,
 		references: {
