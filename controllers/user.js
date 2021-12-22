@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const sequelize = require('../middleware/database.js');
 
+const { ValidationError } = require('sequelize');
 const { User, UserRole, Role } = require('../models/main.js');
 
 dotenv.config();
@@ -20,7 +21,7 @@ const signin = async (req, res) => {
         const existing_user = await User.findOne({ where: { username } });
 
         if (!existing_user || !await bcrypt.compare(password, existing_user.password_hash)) {
-            res.status(404).json({ error: 'username or password is invalid' });
+            res.status(400).json({ error: 'username or password is invalid' });
             return;
         }
 
@@ -66,9 +67,13 @@ const signup = async (req, res) => {
         );
 
         res.status(201).json({ user: { id: user.id }, token });
-    } catch(error) {
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            res.status(400).json({ error: 'invalid request data' });
+        } else {
+            res.status(500).json({ error });
+        }
         await transaction.rollback();
-        res.status(500).json({ error });
     }
 };
 

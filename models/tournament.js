@@ -22,10 +22,16 @@ const Tournament = sequelize.define('tournaments', {
 		}
   	}, date_start: {
 		type: DataTypes.DATE,
-		allowNull: false
+		allowNull: false,
+		validate: {
+			isDate: true
+		}
   	}, date_end: {
 		type: DataTypes.DATE,
-		allowNull: false
+		allowNull: false,
+		validate: {
+			isDate: true
+		}
   	}, visible: {
 		type: DataTypes.TINYINT(1),
 		allowNull: false,

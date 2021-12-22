@@ -1,5 +1,6 @@
 const sequelize = require('../middleware/database.js');
 
+const { ValidationError } = require('sequelize');
 const { Tournament, TournamentMember, TournamentMatchup } = require('../models/main.js');
 
 const { getTeamByID } = require('./team.js');
@@ -45,6 +46,7 @@ const getAllTournaments = async (req, res) => {
 
     try {
         let where = {};
+        let attributes;
 
         if (req.user) {
             if (!req.admin || !req.user.admin) {
@@ -54,10 +56,10 @@ const getAllTournaments = async (req, res) => {
             where.visible = req.visible != undefined? req.visible : 1;
         } else {
             where.visible = 1;
-            where.attributes = { exclude: ['visible'] };
+            attributes = { exclude: ['visible'] };
         }
 
-        const tournaments = await Tournament.findAll({ where, offset, limit: PAGE_RECORDS_LIMIT });
+        const tournaments = await Tournament.findAll({ where, attributes, offset, limit: PAGE_RECORDS_LIMIT });
         
         if (tournaments) {
             res.status(200).json({ tournaments });
@@ -121,6 +123,11 @@ const createTournament = async (req, res) => {
         return;
     }
 
+    if (!(member_ids.length > 1) || !Number.isInteger(Math.log2(member_ids.length)))  {
+        res.status(400).json({ error: 'member_ids count (n) must be power of 2 (2 ^ m = n)' });
+        return;
+    }
+
     const transaction = await sequelize.transaction();
 
     try {
@@ -150,8 +157,11 @@ const createTournament = async (req, res) => {
 
         res.status(201).json({ tournament });
     } catch (error) {
-        await transaction.rollback();
-        res.status(500).json({ error });
+        if (error instanceof ValidationError) {
+            res.status(400).json({ error: 'invalid request data' });
+        } else {
+            res.status(500).json({ error });
+        }
     }
 };
 
@@ -188,6 +198,11 @@ const acceptTournamentRequest = async (req, res) => {
 
         if (!tournament) {
             res.status(404).json({ error: 'tournament not found' });
+            return;
+        }
+
+        if (tournament.visible) {
+            res.status(200).json({ error: 'tournament is already active' });
             return;
         }
 

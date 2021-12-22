@@ -1,7 +1,8 @@
 const sequelize = require('../middleware/database.js');
 const PAGE_RECORDS_LIMIT = 10;
 
-const { Team, TeamMember, TournamentMember } = require('../models/main.js');
+const { ValidationError } = require('sequelize');
+const { User, Team, TeamMember, TournamentMember } = require('../models/main.js');
 
 const getTeamByID = async (req) => {
     if (req.user) {
@@ -41,6 +42,7 @@ const getAllTeams = async (req, res) => {
 
     try {
         let where = {};
+        let attributes;
 
         if (req.user) {
             if (!req.admin || !req.user.admin) {
@@ -50,10 +52,10 @@ const getAllTeams = async (req, res) => {
             where.visible = req.visible != undefined? req.visible : 1;
         } else {
             where.visible = 1;
-            where.attributes = { exclude: ['visible'] };
+            attributes = { exclude: ['visible'] };
         }
 
-        const teams = await Team.findAll({ where, offset, limit: PAGE_RECORDS_LIMIT });
+        const teams = await Team.findAll({ where, attributes, offset, limit: PAGE_RECORDS_LIMIT });
 
         if (teams) {
             res.status(200).json({ teams });
@@ -107,6 +109,10 @@ const createTeam = async (req, res) => {
         const team = await Team.create({ team_name, manager_id: req.user.id }, { transaction });
 
         for (const user_id of member_ids) {
+            if (!await User.findOne({ where: { id: user_id } })) {
+                res.status(400).json({ error: 'invalid member_ids'});
+                return await transaction.rollback();
+            }
             await TeamMember.create({ team_id: team.id, user_id }, { transaction });
         }
 
@@ -114,8 +120,12 @@ const createTeam = async (req, res) => {
 
         res.status(201).json({ team: { id: team.id } });
     } catch (error) {
+        if (error instanceof ValidationError) {
+            res.status(400).json({ error: 'invalid request data' });
+        } else {
+            res.status(500).json({ error });
+        }
         await transaction.rollback();
-        res.status(500).json({ error });
     }
 };
 
@@ -129,8 +139,8 @@ const deleteTeam = async (req, res) => {
             res.status(404).json({ error: 'team not found' });
             return await transaction.rollback();
         }
-
-        if (!await TournamentMember.findAll({ where: { team_id: req.params.id } })) {
+        
+        if ((await TournamentMember.findAll({ where: { team_id: req.params.id } })).length > 0) {
             res.status(400).json({ error: 'team is member of tournaments' });
             return await transaction.rollback();
         }
@@ -156,6 +166,11 @@ const acceptTeamRequest = async (req, res) => {
 
         if (!team) {
             res.status(404).json({ error: 'team not found' });
+            return;
+        }
+
+        if (team.visible) {
+            res.status(200).json({ error: 'team is already active' });
             return;
         }
 

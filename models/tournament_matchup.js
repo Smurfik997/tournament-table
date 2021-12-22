@@ -33,7 +33,10 @@ const TournamentMatchup = sequelize.define('tournament_matchups', {
         type: DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false
     }, date: {
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+		validate: {
+			isDate: true
+		}
     }, team1_score: {
         type: DataTypes.INTEGER(10).UNSIGNED
     }, team2_score: {
