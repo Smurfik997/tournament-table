@@ -1,0 +1,343 @@
+<html>
+    <head>
+        <title>Tournament $?</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                margin: 0 auto;
+                min-width: 800px;
+                min-height: 600px;
+                font: 600 16px system-ui;
+            }
+
+            .header {
+                position: relative;
+                left: 7%;
+                top: 0;
+                width: 86%;
+                height: 80px;
+                background-color: rgb(230, 230, 230);
+                border-radius: 0 0 20px 20px;
+                line-height: 80px;
+                text-align: center;
+                font-size: 25px;
+            }
+
+            .table {
+                position: relative;
+                left: 7%;
+                top: calc(10% - 40px);
+                width: 86%;
+                height: 80%;
+            }
+
+            .column {
+                float: left;
+                height: 100%;
+            }
+
+            .row {
+                width: 100%;
+            }
+
+                .row .horizontal {
+                    position: relative;
+                    top: calc(50% - 2px);
+                    width: 100%;
+                    height: 4px;
+                    background-color: black;
+                }
+
+                .half-left .horizontal {
+                    width: 50%;
+                }
+
+                .half-right .horizontal {
+                    left: 50%;
+                    width: 50%;
+                }
+
+                .without-horizontal .horizontal {
+                    display: none;
+                }
+
+                .column .vertical {
+                    position: relative;
+                    left: calc(100% - 4px);
+                    float: left;
+                    width: 4px;
+                    background-color: black;
+                }
+
+            .matchup {
+                position: relative;
+                z-index: 1000;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                max-width: 306px;
+                height: 96px;
+                line-height: 150%;
+                box-sizing: border-box;
+                background-color: white;
+                border: solid 3px black;
+                border-radius: 10px;
+            }
+
+                .matchup > .time {
+                    height: 33.3%;
+                    text-align: center;
+                }
+                
+                .matchup > .team {
+                    height: 33.3%;
+                }
+
+                .matchup > .team:nth-child(2) {
+                    border: solid 1px black;
+                    border-width: 1px 0;
+                }
+
+                .team > .name {
+                    float: left;
+                    width: 84%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    padding-left: 10px;
+                }
+
+                .team > .score {
+                    float: right;
+                    width: 15%;
+                    height: 100%;
+                    text-align: center;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            
+        </div>
+        <div class="table">
+            <!-- <div class="column" style="width: 33.3%;">
+                <div class="row" style="height: 25%;"> 1 </div>
+                <div class="row" style="height: 25%;"> 2 </div>
+                <div class="row" style="height: 25%;"> 3 </div>
+                <div class="row" style="height: 25%;"> 4 </div>
+            </div>
+            <div class="column" style="width: 33.3%; background-color: chartreuse;">
+                <div class="row" style="height: 50%;"> 1 </div>
+                <div class="row" style="height: 50%;"> 2 </div>
+            </div>
+            <div class="column" style="width: 33.3%; background-color: crimson;">
+                <div class="row" style="height: 100%;">
+                    <div class="vertical"></div>
+                    <div class="horizontal half-left"></div>
+                    <div class="matchup">
+                        <div class="time">23.12.2021 13:30</div>
+                        <div class="team">
+                            <div class="name">Team1 Name</div>
+                            <div class="score">15</div>
+                        </div>
+                        <div class="team">
+                            <div class="name">Team2 Name</div>
+                            <div class="score">7</div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </body>
+    <script>
+        const host = 'localhost';
+        const port = 5000;
+
+        const httpRequest = async (req) => {
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    req.callback({ body: JSON.parse(xhr.responseText), status: xhr.status });
+                }
+            };
+            
+            xhr.open(req.method, `http://${host}:${port}/${req.path.substr(1)}`);
+            xhr.send(req.data? req.data : '');
+        };
+
+        const addMatchup = (row) => {
+            let matchup = document.createElement('div');
+            matchup.className = 'matchup';
+            let time = document.createElement('div');
+            time.className = 'time';
+            let team = document.createElement('div');
+            team.className = 'team';
+            let name = document.createElement('div');
+            name.className = 'name';
+            let score = document.createElement('div');
+            score.className = 'score';
+            team.appendChild(name);
+            team.appendChild(score);
+            matchup.appendChild(time);
+            matchup.appendChild(team);
+            matchup.appendChild(team.cloneNode(true));
+            return row.appendChild(matchup);
+        }
+
+        const addRow = (column) => {
+            let row = document.createElement('div');
+            row.className = 'row';
+            let horizontal = document.createElement('div');
+            horizontal.className = 'horizontal';
+            row.appendChild(horizontal);
+            addMatchup(row);
+            return column.appendChild(row);
+        };
+
+        const addColumn = (rowsCount) => {
+            let column = document.createElement('div');
+            column.className = 'column';
+            let vertical = document.createElement('div');
+            vertical.className = 'vertical';
+            vertical.style.height = `${100 - (100 / rowsCount)}%`;
+            vertical.style.top = `${(100 / rowsCount / 2)}%`;
+            column.appendChild(vertical);
+
+            for (let i = 0; i < rowsCount; i++) {
+                let row = addRow(column);
+                row.style.height = `${100 / rowsCount}%`;
+                row.setAttribute('order_position', i + 1);
+            }
+
+            return document.getElementsByClassName('table')[0].appendChild(column);
+        };
+
+        const initTable = (teamsCount) => {
+            const matchupsCount = teamsCount / 2;
+            const columnsCount = Math.log2(matchupsCount) + 1;
+            console.log(columnsCount);
+
+            for (let j = 0; j < columnsCount; j++) {
+                let column = addColumn(matchupsCount / Math.pow(2, j));
+                if (columnsCount == 1) {
+                    column.className += ' without-horizontal'
+                } else if (j == 0) {
+                    column.className += ' half-right';
+                } else if (j == columnsCount - 1) {
+                    column.className += ' half-left';
+                }
+                column.style.width = `${100 / columnsCount}%`;
+                column.setAttribute('stage', j + 1);
+            }
+        };
+
+        const getMatchupBlock = (stage, order_position) => {
+            return document.querySelector(
+                `div[stage="${stage}"] div[order_position="${order_position}"] div[class="matchup"]`
+            );
+        };
+
+        const getTeamDetails = async (team_id) => {
+            const teamInfo = await new Promise((resolve, reject) => {
+                httpRequest(
+                    { method: 'GET', path: `/team/${team_id}`, callback: (res) => resolve(res) }
+                )
+            }).then((response) => {
+                return response;
+            });
+
+            if (teamInfo.status != 200) {
+                return null;
+            }
+
+            return teamInfo.body.team;
+        };
+
+        const getTournamentDetails = async (tournament_id) => {
+            const tournamentInfo = await new Promise((resolve, reject) => {
+                httpRequest(
+                    { method: 'GET', path: `/tournaments/id/${tournament_id}`, callback: (res) => resolve(res) }
+                )
+            }).then((response) => {
+                return response;
+            });
+
+            if (tournamentInfo.status != 200) {
+                return null;
+            }
+
+            const tournamentMembers = await new Promise((resolve, reject) => {
+                httpRequest(
+                    { method: 'GET', path: `/tournaments/id/${tournament_id}/members`, callback: (res) => resolve(res) }
+                )
+            }).then((response) => {
+                return response;
+            });
+
+            if (tournamentMembers.status != 200) {
+                return null;
+            }
+
+            const tournamentMatchups = await new Promise((resolve, reject) => {
+                httpRequest(
+                    { method: 'GET', path: `/tournaments/id/${tournament_id}/matchups`, callback: (res) => resolve(res) }
+                )
+            }).then((response) => {
+                return response;
+            });
+
+            if (tournamentMatchups.status != 200) {
+                return null;
+            }
+
+            for (let i = 0; i < tournamentMembers.body.tournament_members.length; i++) {
+                const team_id = tournamentMembers.body.tournament_members[i].team_id;
+                tournamentMembers.body.tournament_members[i] = [team_id, await getTeamDetails(team_id)];
+
+            }
+
+            return {
+                info: tournamentInfo.body.tournament,
+                matchups: tournamentMatchups.body.tournament_matchups,
+                members: Object.fromEntries(tournamentMembers.body.tournament_members)
+            };
+        };
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        const main = async () => {
+            const tournament = await getTournamentDetails(window.location.pathname.split('/tournaments/')[1]);
+            document.title = `Tournament ${tournament.info.name}`;
+            // const tournament = await getTournamentDetails(4);
+            initTable(Object.keys(tournament.members).length);
+
+            console.log(tournament.info);
+            let start_date = new Date(tournament.info.date_start).toLocaleString().replace(',', '');
+            start_date = start_date.substr(0, start_date.length - 9);
+            let end_date = new Date(tournament.info.date_end).toLocaleString().replace(',', '');
+            end_date = end_date.substr(0, end_date.length - 9);
+            document.getElementsByClassName('header')[0].innerHTML = `${tournament.info.name} (${start_date} - ${end_date})`;
+
+            for (const matchup of tournament.matchups) {
+                let matchupElement = getMatchupBlock(matchup.stage, matchup.order_position);
+                if (matchup.date) {
+                    let date = new Date(matchup.date).toLocaleString().replace(',', '');
+                    date = date.substr(0, date.length - 3);
+                    matchupElement.getElementsByClassName('time')[0].innerHTML = date;
+                }
+                let teams = matchupElement.getElementsByClassName('team');
+                if (matchup.team1_id) {
+                    teams[0].getElementsByClassName('name')[0].innerHTML = tournament.members[matchup.team1_id].team_name;
+                    teams[0].getElementsByClassName('score')[0].innerHTML = matchup.team1_score;
+                }
+                if (matchup.team2_id) {
+                    teams[1].getElementsByClassName('name')[0].innerHTML = tournament.members[matchup.team2_id].team_name;
+                    teams[1].getElementsByClassName('score')[0].innerHTML = matchup.team2_score;
+                }
+            }
+        }
+
+        main();
+    </script>
+</html>
