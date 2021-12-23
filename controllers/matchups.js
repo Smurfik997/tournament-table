@@ -14,7 +14,7 @@ const updateMatchupDate = async (req, res) => {
     try {
         const tournament = await getTournamentByID(req);
 
-        if (!tournament) {
+        if (!tournament || (tournament.visible == 0)) {
             res.status(404).json({ error: 'tournament not found' });
             return;
         }
@@ -51,7 +51,7 @@ const setWinner = async (req, res) => {
     try {
         const tournament = await getTournamentByID(req);
 
-        if (!tournament) {
+        if (!tournament || (tournament.visible == 0)) {
             res.status(404).json({ error: 'tournament not found' });
             return await transaction.rollback();
         }
@@ -125,7 +125,7 @@ const addMatchupOnFirstStage = async (req, res) => {
     try {
         const tournament = await getTournamentByID(req);
 
-        if (!tournament) {
+        if (!tournament || (tournament.visible == 0)) {
             res.status(404).json({ error: 'tournament not found' });
             return;
         }
