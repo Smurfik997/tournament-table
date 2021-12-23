@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const sequelize = require('./middleware/database.js')
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const userRoutes = require('./routes/user.js');
 const adminRoutes = require('./routes/admin.js');
@@ -14,6 +15,7 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 
+app.use(cors()); 
 app.use(bodyParser.json());
 app.use('/user', userRoutes);
 app.use('/admin', (req, res, next) => { req.admin = 1; req.visible = 0; next(); }, adminRoutes);
