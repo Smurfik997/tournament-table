@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Tournament $?</title>
+        <title>Tournament Not Found</title>
         <meta charset="utf-8">
         <style>
             body {
@@ -8,6 +8,7 @@
                 min-width: 800px;
                 min-height: 600px;
                 font: 600 16px system-ui;
+                color: rgb(50, 70, 70);
             }
 
             .header {
@@ -16,9 +17,9 @@
                 top: 0;
                 width: 86%;
                 height: 80px;
-                background-color: rgb(230, 230, 230);
+                background-color: rgb(255, 230, 135);
                 border-radius: 0 0 20px 20px;
-                line-height: 80px;
+                line-height: 75px;
                 text-align: center;
                 font-size: 25px;
             }
@@ -31,6 +32,12 @@
                 height: 80%;
             }
 
+            .error {
+                color: rgb(200, 20, 20);
+                font-size: 20px;
+                text-align: center;
+            }
+
             .column {
                 float: left;
                 height: 100%;
@@ -40,7 +47,7 @@
                 width: 100%;
             }
 
-                .row .horizontal {
+                .row > .horizontal {
                     position: relative;
                     top: calc(50% - 2px);
                     width: 100%;
@@ -48,46 +55,51 @@
                     background-color: black;
                 }
 
-                .half-left .horizontal {
-                    width: 50%;
-                }
+            .half-left .horizontal {
+                width: 50%;
+            }
 
-                .half-right .horizontal {
-                    left: 50%;
-                    width: 50%;
-                }
+            .half-right .horizontal {
+                left: 50%;
+                width: 50%;
+            }
 
-                .without-horizontal .horizontal {
-                    display: none;
-                }
+            .without-horizontal .horizontal {
+                display: none;
+            }
 
-                .column .vertical {
-                    position: relative;
-                    left: calc(100% - 4px);
-                    float: left;
-                    width: 4px;
-                    background-color: black;
-                }
+            .column .vertical {
+                position: relative;
+                left: calc(100% - 4px);
+                float: left;
+                width: 4px;
+                background-color: black;
+            }
 
             .matchup {
                 position: relative;
+                overflow: hidden;
                 z-index: 1000;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 width: 90%;
-                max-width: 306px;
-                height: 96px;
-                line-height: 150%;
+                max-width: 308px;
+                height: 98px;
+                line-height: 27px;
                 box-sizing: border-box;
                 background-color: white;
-                border: solid 3px black;
+                border: solid 4px black;
                 border-radius: 10px;
             }
 
                 .matchup > .time {
                     height: 33.3%;
                     text-align: center;
+                }
+
+                .matchup > .time.inactive {
+                    opacity: 0.8;
                 }
                 
                 .matchup > .team {
@@ -97,6 +109,10 @@
                 .matchup > .team:nth-child(2) {
                     border: solid 1px black;
                     border-width: 1px 0;
+                }
+
+                .team.winner {
+                    background-color: aquamarine;
                 }
 
                 .team > .name {
@@ -120,33 +136,7 @@
             
         </div>
         <div class="table">
-            <!-- <div class="column" style="width: 33.3%;">
-                <div class="row" style="height: 25%;"> 1 </div>
-                <div class="row" style="height: 25%;"> 2 </div>
-                <div class="row" style="height: 25%;"> 3 </div>
-                <div class="row" style="height: 25%;"> 4 </div>
-            </div>
-            <div class="column" style="width: 33.3%; background-color: chartreuse;">
-                <div class="row" style="height: 50%;"> 1 </div>
-                <div class="row" style="height: 50%;"> 2 </div>
-            </div>
-            <div class="column" style="width: 33.3%; background-color: crimson;">
-                <div class="row" style="height: 100%;">
-                    <div class="vertical"></div>
-                    <div class="horizontal half-left"></div>
-                    <div class="matchup">
-                        <div class="time">23.12.2021 13:30</div>
-                        <div class="team">
-                            <div class="name">Team1 Name</div>
-                            <div class="score">15</div>
-                        </div>
-                        <div class="team">
-                            <div class="name">Team2 Name</div>
-                            <div class="score">7</div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+
         </div>
     </body>
     <script>
@@ -170,7 +160,8 @@
             let matchup = document.createElement('div');
             matchup.className = 'matchup';
             let time = document.createElement('div');
-            time.className = 'time';
+            time.className = 'time inactive';
+            time.innerHTML = 'Час ще не визначено';
             let team = document.createElement('div');
             team.className = 'team';
             let name = document.createElement('div');
@@ -216,7 +207,9 @@
         const initTable = (teamsCount) => {
             const matchupsCount = teamsCount / 2;
             const columnsCount = Math.log2(matchupsCount) + 1;
-            console.log(columnsCount);
+            if (teamsCount == 16) {
+                document.getElementsByClassName('table')[0].style.height = '150%';
+            }
 
             for (let j = 0; j < columnsCount; j++) {
                 let column = addColumn(matchupsCount / Math.pow(2, j));
@@ -256,9 +249,9 @@
 
         const getTournamentDetails = async (tournament_id) => {
             const tournamentInfo = await new Promise((resolve, reject) => {
-                httpRequest(
-                    { method: 'GET', path: `/tournaments/id/${tournament_id}`, callback: (res) => resolve(res) }
-                )
+                httpRequest({
+                    method: 'GET', path: `/tournaments/id/${tournament_id}`, callback: (res) => resolve(res)
+                })
             }).then((response) => {
                 return response;
             });
@@ -268,9 +261,10 @@
             }
 
             const tournamentMembers = await new Promise((resolve, reject) => {
-                httpRequest(
-                    { method: 'GET', path: `/tournaments/id/${tournament_id}/members`, callback: (res) => resolve(res) }
-                )
+                httpRequest({
+                    method: 'GET', path: `/tournaments/id/${tournament_id}/members`,
+                    callback: (res) => resolve(res)
+                })
             }).then((response) => {
                 return response;
             });
@@ -280,9 +274,10 @@
             }
 
             const tournamentMatchups = await new Promise((resolve, reject) => {
-                httpRequest(
-                    { method: 'GET', path: `/tournaments/id/${tournament_id}/matchups`, callback: (res) => resolve(res) }
-                )
+                httpRequest({
+                    method: 'GET', path: `/tournaments/id/${tournament_id}/matchups`,
+                    callback: (res) => resolve(res)
+                })
             }).then((response) => {
                 return response;
             });
@@ -304,36 +299,55 @@
             };
         };
         
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+        //////////////////////////////////////////////////////////////////////////////////////////////////////      
         const main = async () => {
             const tournament = await getTournamentDetails(window.location.pathname.split('/tournaments/')[1]);
+
+            if (!tournament) {
+                document.getElementsByClassName('table')[0].innerHTML = 'Tournament Not Found';
+                document.getElementsByClassName('table')[0].className += ' error';
+                return;
+            }
+
             document.title = `Tournament ${tournament.info.name}`;
+            // FOR FRONTEND TESTING PURPORSE
             // const tournament = await getTournamentDetails(4);
             initTable(Object.keys(tournament.members).length);
 
-            console.log(tournament.info);
             let start_date = new Date(tournament.info.date_start).toLocaleString().replace(',', '');
             start_date = start_date.substr(0, start_date.length - 9);
             let end_date = new Date(tournament.info.date_end).toLocaleString().replace(',', '');
             end_date = end_date.substr(0, end_date.length - 9);
-            document.getElementsByClassName('header')[0].innerHTML = `${tournament.info.name} (${start_date} - ${end_date})`;
+            const header = document.getElementsByClassName('header')[0];
+            header.innerHTML = `${tournament.info.name} (${start_date} - ${end_date})`;
 
             for (const matchup of tournament.matchups) {
                 let matchupElement = getMatchupBlock(matchup.stage, matchup.order_position);
                 if (matchup.date) {
                     let date = new Date(matchup.date).toLocaleString().replace(',', '');
                     date = date.substr(0, date.length - 3);
-                    matchupElement.getElementsByClassName('time')[0].innerHTML = date;
+                    const time = matchupElement.getElementsByClassName('time')[0];
+                    time.innerHTML = date;
+                    time.className = 'time';
                 }
                 let teams = matchupElement.getElementsByClassName('team');
                 if (matchup.team1_id) {
-                    teams[0].getElementsByClassName('name')[0].innerHTML = tournament.members[matchup.team1_id].team_name;
-                    teams[0].getElementsByClassName('score')[0].innerHTML = matchup.team1_score;
+                    if (matchup.winner == matchup.team1_id) {
+                        teams[0].className += ' winner';
+                    }
+                    const name = teams[0].getElementsByClassName('name')[0];
+                    name.innerHTML = tournament.members[matchup.team1_id].team_name;
+                    const score = teams[0].getElementsByClassName('score')[0];
+                    score.innerHTML = matchup.team1_score;
                 }
                 if (matchup.team2_id) {
-                    teams[1].getElementsByClassName('name')[0].innerHTML = tournament.members[matchup.team2_id].team_name;
-                    teams[1].getElementsByClassName('score')[0].innerHTML = matchup.team2_score;
+                    if (matchup.winner == matchup.team2_id) {
+                        teams[1].className += ' winner';
+                    }
+                    const name = teams[1].getElementsByClassName('name')[0];
+                    name.innerHTML = tournament.members[matchup.team2_id].team_name;
+                    const score = teams[1].getElementsByClassName('score')[0];
+                    score.innerHTML = matchup.team2_score;
                 }
             }
         }
@@ -341,3 +355,31 @@
         main();
     </script>
 </html>
+
+<!-- <div class="column" style="width: 33.3%;">
+    <div class="row" style="height: 25%;"> 1 </div>
+    <div class="row" style="height: 25%;"> 2 </div>
+    <div class="row" style="height: 25%;"> 3 </div>
+    <div class="row" style="height: 25%;"> 4 </div>
+</div>
+<div class="column" style="width: 33.3%; background-color: chartreuse;">
+    <div class="row" style="height: 50%;"> 1 </div>
+    <div class="row" style="height: 50%;"> 2 </div>
+</div>
+<div class="column" style="width: 33.3%; background-color: crimson;">
+    <div class="row" style="height: 100%;">
+        <div class="vertical"></div>
+        <div class="horizontal half-left"></div>
+        <div class="matchup">
+            <div class="time">23.12.2021 13:30</div>
+            <div class="team">
+                <div class="name">Team1 Name</div>
+                <div class="score">15</div>
+            </div>
+            <div class="team">
+                <div class="name">Team2 Name</div>
+                <div class="score">7</div>
+            </div>
+        </div>
+    </div>
+</div> -->
