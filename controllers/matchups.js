@@ -26,6 +26,13 @@ const updateMatchupDate = async (req, res) => {
             return;
         }
 
+        if (tournament.date_start > new Date(date) || tournament.date_end < new Date(date)) {
+            res.status(400).json(
+                { error: `matchup date should be between ${tournament.date_start} and ${tournament.date_end}` }
+            );
+            return;
+        }
+
         await matchup.update({ date });
 
         res.status(200).json({ matchup });
