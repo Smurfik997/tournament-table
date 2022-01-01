@@ -1,0 +1,7193 @@
+{
+	"info": {
+		"_postman_id": "eb869a70-5192-42b5-a905-1b98a25807e6",
+		"name": "Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/user",
+			"item": [
+				{
+					"name": "/team",
+					"item": [
+						{
+							"name": "/create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"team_name\": \"Sympathetic Cats\",\r\n    \"member_ids\": [2, 10]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/team/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"team",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Empty Body",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/team/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "54"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"36-wWQ2wN8e2JW//gQkidPpjZ0nyUs\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Dec 2021 17:26:03 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team_name, member_ids fields are requiered\"\n}"
+								},
+								{
+									"name": "201 Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"team_name\": \"Sympathetic Cats\",\r\n    \"member_ids\": [2, 10]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/team/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"create"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "17"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"11-XT9SoNRS2RYVJEIk207e5Zl+kR8\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Dec 2021 17:46:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": 2\n    }\n}"
+								},
+								{
+									"name": "Already Exists",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"team_name\": \"Sympathetic Cats\",\r\n    \"member_ids\": [2, 10]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/team/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "39"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"27-Kjcbzz/+94JEQt6emcuCkYVnHVA\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Dec 2021 17:47:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"name of team must be unique\"\n}"
+								},
+								{
+									"name": "Invalid Member IDs",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"team_name\": \"Unique Team Name\",\r\n    \"member_ids\": [2, 10, 80]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/team/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "30"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1e-VzdZrpzDQdc6bzWJiUWg6c6j5dc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 10:30:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"invalid member_ids\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/team/delete/9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"team",
+										"delete",
+										"9"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid ID or user doesn't own it",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/team/delete/-1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"delete",
+												"-1"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 21 Dec 2021 17:51:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "Team is member of tournament",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/team/delete/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"delete",
+												"3"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "41"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"29-wtBc6uFqB3jUaNFW2l++vnCFk1A\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:00:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team is member of tournaments\"\n}"
+								},
+								{
+									"name": "Successfully Deleted",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/team/delete/9",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"delete",
+												"9"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "19"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"13-wBwQN7hc2BQQuiIhU6O8Im2esBg\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:03:59 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": \"9\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/team_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/team/7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"team",
+										"7"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Team ID  or user doesn't own it",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/team/djkaldja",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"djkaldja"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 10:33:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/team/7",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"7"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-5UYtRs6TPdscfZL27GSQkhJLEa0\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 10:43:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": 7,\n        \"team_name\": \"Unique Team Name\",\n        \"manager_id\": 1,\n        \"visible\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/team_id/members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/team/7/members",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"team",
+										"7",
+										"members"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Team ID or user doesn't own it",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/team/-1/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"-1",
+												"members"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 10:45:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/team/7/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"team",
+												"7",
+												"members"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "61"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3d-iHpq5TndNue+RlgHVhU0Aift26s\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 10:46:06 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team_members\": [\n        {\n            \"user_id\": 1\n        },\n        {\n            \"user_id\": 5\n        },\n        {\n            \"user_id\": 30\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/tournaments",
+					"item": [
+						{
+							"name": "/id",
+							"item": [
+								{
+									"name": "/tournament_id/matchups",
+									"item": [
+										{
+											"name": "/addToFirstStage",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"team1_id\": \"16\",\r\n    \"team2_id\": \"15\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 3\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/4/matchups/addToFirstStage",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"4",
+														"matchups",
+														"addToFirstStage"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Empty Body",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "73"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"49-8jqXB6ltaZ3nSeHpkuxPuymS4KI\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:22:51 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_id, team2_id, date, order_position fields are requiered\"\n}"
+												},
+												{
+													"name": "Team Not A Member of Tournament",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"15\",\r\n    \"team2_id\": \"10\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 4\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "66"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"42-tZ7DfUtxTwR34NToD8FZPOqB77s\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:26:22 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_id or/and team2_id is not a member of tournament\"\n}"
+												},
+												{
+													"name": "Incorrect Order Position",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"15\",\r\n    \"team2_id\": \"10\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 5\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "50"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"32-3ki3n1BjXtToSmdW+L/iCzRH3Vo\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:37:03 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"order position must be between 1 and 4\"\n}"
+												},
+												{
+													"name": "Order Position Is Occupied",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"16\",\r\n    \"team2_id\": \"15\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 2\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "83"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"53-ApBed2ssJRrm47cZFNFbN2lBCP8\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:39:36 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_id or/and team2_id is already at this stage or/and order position\"\n}"
+												},
+												{
+													"name": "200 OK - new matchup",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"16\",\r\n    \"team2_id\": \"15\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 3\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "134"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"86-xD9peH1+XMujYwpWhHqmB7c/Yns\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:42:16 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"matchup\": {\n        \"id\": 18,\n        \"tournament_id\": 4,\n        \"team1_id\": \"16\",\n        \"team2_id\": \"15\",\n        \"stage\": 1,\n        \"order_position\": 3,\n        \"date\": \"2022-01-17T17:30:00.000Z\"\n    }\n}"
+												},
+												{
+													"name": "Already In Table",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"16\",\r\n    \"team2_id\": \"15\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 3\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "83"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"53-ApBed2ssJRrm47cZFNFbN2lBCP8\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:43:31 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_id or/and team2_id is already at this stage or/and order position\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/setWinner",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"team1_score\": 5,\r\n    \"team2_score\": 7,\r\n    \"matchup_id\": 1\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/4/matchups/setWinner",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"4",
+														"matchups",
+														"setWinner"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Empty Body",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/setWinner",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"setWinner"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "69"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"45-0nBZi8UR3+tqgwnHd4CAGta6V+I\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:44:43 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_score, team2_score, matchup_id fields are requiered\"\n}"
+												},
+												{
+													"name": "Invalid Matchup ID",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_score\": 5,\r\n    \"team2_score\": 7,\r\n    \"matchup_id\": 30\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/setWinner",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"setWinner"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "29"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"1d-d+v04SdQslUSDllKVLwz+iprn14\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:51:19 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"matchup not found\"\n}"
+												},
+												{
+													"name": "Successfully Updated",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_score\": 5,\r\n    \"team2_score\": 7,\r\n    \"matchup_id\": \"1\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/setWinner",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"setWinner"
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "82"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"52-LPuYiXZPv2wVq6HPJQZvgst1CeY\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:50:28 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"matchup\": {\n        \"id\": 19,\n        \"tournament_id\": 4,\n        \"stage\": 2,\n        \"order_position\": 1,\n        \"team2_id\": 11\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/updateDate",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"matchup_id\": 19,\r\n    \"date\": \"2022-01-19 15:30:00\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/4/matchups/updateDate",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"4",
+														"matchups",
+														"updateDate"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Empty Body",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/2/matchups/updateDate",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"2",
+																"matchups",
+																"updateDate"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "49"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"31-YMNTzHegR15daD/Kyo93sK3lZjM\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:54:28 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"matchup_id, date fields are requiered\"\n}"
+												},
+												{
+													"name": "Invalid Tournament ID or user doesn't own it",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"matchup_id\": 19,\r\n    \"date\": \"2022-01-19 15:30:00\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/2/matchups/updateDate",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"2",
+																"matchups",
+																"updateDate"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "32"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:56:26 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"tournament not found\"\n}"
+												},
+												{
+													"name": "Invalid Matchup ID",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"matchup_id\": 30,\r\n    \"date\": \"2022-01-19 15:30:00\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/updateDate",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"updateDate"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "29"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"1d-d+v04SdQslUSDllKVLwz+iprn14\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:56:59 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"matchup not found\"\n}"
+												},
+												{
+													"name": "200 OK - updated",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"matchup_id\": 19,\r\n    \"date\": \"2022-01-19 15:30:00\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/user/tournaments/id/4/matchups/updateDate",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"user",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"updateDate"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "184"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"b8-4mTYWW+G24Kfxu+XaQyg46XN8uM\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:58:48 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"matchup\": {\n        \"id\": 19,\n        \"tournament_id\": 4,\n        \"team1_id\": null,\n        \"team2_id\": 11,\n        \"stage\": 2,\n        \"order_position\": 1,\n        \"date\": \"2022-01-19T13:30:00.000Z\",\n        \"team1_score\": null,\n        \"team2_score\": null,\n        \"winner\": null\n    }\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/tournament_id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/id/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"id",
+												"3"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID  or user doesn't own it",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/3",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"3"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:20:22 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/4",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"4"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "172"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"ac-7EKMBL8YPq11LnjSeqYYx3jIRKY\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:20:41 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament\": {\n        \"id\": 4,\n        \"name\": \"Big Student Random Points Cup 2022\",\n        \"manager_id\": 1,\n        \"date_start\": \"2022-01-17T00:00:00.000Z\",\n        \"date_end\": \"2022-01-30T23:59:59.000Z\",\n        \"visible\": 0\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "/tournament_id/members",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/id/4/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"id",
+												"4",
+												"members"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID  or user doesn't own it",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/3/members",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"3",
+														"members"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:21:03 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK - members",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/4/members",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"4",
+														"members"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "53"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"35-6XH8NpiLF5LYcEOCy6jQBfJxYG0\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:21:23 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament_members\": [\n        {\n            \"team_id\": 3\n        },\n        {\n            \"team_id\": 11\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "/tournament_id/matchups",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/id/4/matchups",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"id",
+												"4",
+												"matchups"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID or user doesn't own it",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/10/matchups",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"10",
+														"matchups"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:22:13 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK - matchups",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/4/matchups",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"4",
+														"matchups"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "478"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"1de-u/zi4Sdyupw9PZNYxEGQoI7m3xo\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 21:21:04 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament_matchups\": [\n        {\n            \"id\": 1,\n            \"team1_id\": 3,\n            \"team2_id\": 11,\n            \"stage\": 1,\n            \"order_position\": 2,\n            \"date\": \"2022-01-17T14:40:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        },\n        {\n            \"id\": 2,\n            \"team1_id\": 2,\n            \"team2_id\": 8,\n            \"stage\": 1,\n            \"order_position\": 1,\n            \"date\": \"2022-01-17T15:30:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        },\n        {\n            \"id\": 5,\n            \"team1_id\": 14,\n            \"team2_id\": 17,\n            \"stage\": 1,\n            \"order_position\": 4,\n            \"date\": \"2022-01-17T17:30:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        }\n    ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"IASA Winter Session 2021\",\r\n    \"date_start\": \"2021-12-20 02:00:00\",\r\n    \"date_end\": \"2021-12-31 01:59:59\",\r\n    \"member_ids\": [3, 11]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/tournaments/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"tournaments",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Empty Body",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "71"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"47-gSsBRVmzrIRIgw2Ox4LQeJUv8EY\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:59:11 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"name, date_start, date_end, member_ids fields are requiered\"\n}"
+								},
+								{
+									"name": "Invalid Team IDs or team isn't active",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"IASA Winter Session 2021\",\r\n    \"date_start\": \"2021-12-20 02:00:00\",\r\n    \"date_end\": \"2021-12-31 01:59:59\",\r\n    \"member_ids\": [2, 3]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/tournaments/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "30"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1e-VzdZrpzDQdc6bzWJiUWg6c6j5dc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 14:05:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"invalid member_ids\"\n}"
+								},
+								{
+									"name": "201 Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"IASA Winter Session 2021\",\r\n    \"date_start\": \"2021-12-20 02:00:00\",\r\n    \"date_end\": \"2021-12-31 01:59:59\",\r\n    \"member_ids\": [3, 11]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/tournaments/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"create"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "162"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"a2-kndVPxyhnBtJmW+ogoKM+s8opq8\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 14:09:06 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"tournament\": {\n        \"visible\": 0,\n        \"id\": 3,\n        \"name\": \"IASA Winter Session 2021\",\n        \"date_start\": \"2021-12-20T00:00:00.000Z\",\n        \"date_end\": \"2021-12-30T23:59:59.000Z\",\n        \"manager_id\": 1\n    }\n}"
+								},
+								{
+									"name": "Already Exists",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"IASA Winter Session 2021\",\r\n    \"date_start\": \"2021-12-20 02:00:00\",\r\n    \"date_end\": \"2021-12-31 01:59:59\",\r\n    \"member_ids\": [3, 11]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/tournaments/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "45"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2d-44CtF0klf28g9Nrvtjx/nUmK8uo\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 14:09:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"name of tournament must be unique\"\n}"
+								},
+								{
+									"name": "Invalid Request Data (incorrect date)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"IASA Winter Session 202\",\r\n    \"date_start\": \"2021-12-20 ______02:00:00\",\r\n    \"date_end\": \"2021-12-31 01:59:59\",\r\n    \"member_ids\": [3, 11]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/tournaments/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "32"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"20-3NGPSSQE6iGBUcaf2i2rbq7XaMI\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 14:32:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"invalid request data\"\n}"
+								},
+								{
+									"name": "Invalid Tournament Members Number",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Unique Name\",\r\n    \"date_start\": \"2021-12-20 02:00:00\",\r\n    \"date_end\": \"2021-12-31 01:59:59\",\r\n    \"member_ids\": [11]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/tournaments/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"create"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "63"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3f-IPMPFBa0Xw9gx5S9qAITjVQlp44\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 14:41:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"member_ids count (n) must be power of 2 (2 ^ m = n)\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/page_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/tournaments/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"tournaments",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Page ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/asas",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"asas"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "31"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f-AgHr93YhM53vayllsCLgw2zwbSY\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:36:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"invalid page number\"\n}"
+								},
+								{
+									"name": "200 OK - Active Tournaments",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "175"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"af-obkw8H4dmSbdIrAT49WwYrHbb0Q\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:38:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"tournaments\": [\n        {\n            \"id\": 4,\n            \"name\": \"Big Student Random Points Cup 2022\",\n            \"manager_id\": 1,\n            \"date_start\": \"2022-01-17T00:00:00.000Z\",\n            \"date_end\": \"2022-01-30T23:59:59.000Z\",\n            \"visible\": 1\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "/delete/tournament_id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/tournaments/delete/6",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"tournaments",
+										"delete",
+										"6"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Tournament ID or user doesn't own it",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/delete/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"delete",
+												"3"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "32"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:18:49 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"tournament not found\"\n}"
+								},
+								{
+									"name": "Successfully Deleted",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/delete/6",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"delete",
+												"6"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "19"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"13-F0tQ9OjmpjuOsAo9xc8g2DTMPc8\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:19:16 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": \"6\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/requests",
+					"item": [
+						{
+							"name": "/teams/page_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/requests/teams/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"requests",
+										"teams",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Page ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/requests/teams/-1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"requests",
+												"teams",
+												"-1"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "31"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f-AgHr93YhM53vayllsCLgw2zwbSY\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 12:16:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"invalid page number\"\n}"
+								},
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/requests/teams/",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"requests",
+												"teams",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "208"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"d0-TEeDYPrQDL7LYJGbteMmhfnqVwo\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 12:16:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"teams\": [\n        {\n            \"id\": 2,\n            \"team_name\": \"Sympathetic Cats\",\n            \"manager_id\": 1,\n            \"visible\": 0\n        },\n        {\n            \"id\": 3,\n            \"team_name\": \"Night Robots\",\n            \"manager_id\": 1,\n            \"visible\": 0\n        },\n        {\n            \"id\": 7,\n            \"team_name\": \"Unique Team Name\",\n            \"manager_id\": 1,\n            \"visible\": 0\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "/tournaments/page_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/requests/tournaments/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"requests",
+										"tournaments",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Page ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/requests/tournaments/dad",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"requests",
+												"tournaments",
+												"dad"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "31"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f-AgHr93YhM53vayllsCLgw2zwbSY\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:08:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"invalid page number\"\n}"
+								},
+								{
+									"name": "200 OK - invactive tournaments",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/requests/tournaments/",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"requests",
+												"tournaments",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "323"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"143-4iqiOEqih2Pm+jP2fwqs7e7Z1Ro\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:08:47 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"tournaments\": [\n        {\n            \"id\": 3,\n            \"name\": \"IASA Winter Session 2021\",\n            \"manager_id\": 1,\n            \"date_start\": \"2021-12-20T00:00:00.000Z\",\n            \"date_end\": \"2021-12-30T23:59:59.000Z\",\n            \"visible\": 0\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Big Student Random Points Cup 2022\",\n            \"manager_id\": 1,\n            \"date_start\": \"2022-01-17T00:00:00.000Z\",\n            \"date_end\": \"2022-01-30T23:59:59.000Z\",\n            \"visible\": 0\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/signup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"unique_username\",\r\n    \"password\": \"best_password_in_the_world\",\r\n    \"first_name\": \"First\",\r\n    \"last_name\": \"Last\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Empty Body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"signup"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-JaPH8d+N/D3n1WkomfbE/2XbwIM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 16:28:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"username, password, first_name, last_name fields are requiered\"\n}"
+						},
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"unique_username\",\r\n    \"password\": \"best_password_in_the_world\",\r\n    \"first_name\": \"First\",\r\n    \"last_name\": \"Last\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "220"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"dc-rLZ7/6doiuTn/jUWiKALzO6osME\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 17:01:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 1\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVuaXF1ZV91c2VybmFtZSIsImlkIjoxLCJyb2xlX2lkIjoxLCJpYXQiOjE2NDAxMDYwNjAsImV4cCI6MTY0MDEwOTY2MH0.SXVXmMz0sQTszBP7nowlvOWbG2oo7LhSGnvvSnxlMAE\"\n}"
+						},
+						{
+							"name": "Already Exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"unique_username\",\r\n    \"password\": \"best_password_in_the_world\",\r\n    \"first_name\": \"First\",\r\n    \"last_name\": \"Last\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"signup"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-dMOcSs8vZ/uesN0cuPdC8EaSTAE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 17:01:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"username must be unique\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/signin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"unique_username\",\r\n    \"password\": \"best_password_in_the_world\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Empty Body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"signin"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-LpzzjBZhaUHHGKAQuduJ784NLp4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 16:26:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"username, password fields are requiered\"\n}"
+						},
+						{
+							"name": "Invalid Credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"invalid_username\",\r\n    \"password\": \"bad_password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"signin"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-vLx35NOckmz66ustcDis+FICAKM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 10:14:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"username or password is invalid\"\n}"
+						},
+						{
+							"name": "Authorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"unique_username\",\r\n    \"password\": \"best_password_in_the_world\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "204"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cc-jhvnpQayBOkbhKNVIrmRR2woHdU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Dec 2021 17:02:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVuaXF1ZV91c2VybmFtZSIsImlkIjoxLCJyb2xlX2lkIjoxLCJpYXQiOjE2NDAxMDYxNjEsImV4cCI6MTY0MDEwOTc2MX0.-uqaUtJtoKZtLxZhi-YR1YgsaeTZcPlltPbSm17RE8w\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/id/user_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/id/42",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"id",
+								"42"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Existing User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/id/42",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"id",
+										"42"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-QPw0x14DLaOTLhmcGMMdTWdtZBo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 10:18:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"first_name\": \"Cool\",\n        \"last_name\": \"Admin\"\n    }\n}"
+						},
+						{
+							"name": "Invalid User ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/id/-1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"id",
+										"-1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-ggPXBwg2p3T42QY2bx8+ArA9sqE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 10:18:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"user doesn't exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/teams/page_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/teams/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"teams",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid Page Number",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/teams/abrakadabra+page",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"teams",
+										"abrakadabra+page"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-AgHr93YhM53vayllsCLgw2zwbSY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 10:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"invalid page number\"\n}"
+						},
+						{
+							"name": "Active Teams",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/teams/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"teams",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-PIzMchfGOmV6nykhdbZxD+zLSgg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 13:09:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"teams\": [\n        {\n            \"id\": 3,\n            \"team_name\": \"Night Robots\",\n            \"manager_id\": 1,\n            \"visible\": 1\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVuaXF1ZV91c2VybmFtZSIsImlkIjoxLCJyb2xlX2lkIjoxLCJpYXQiOjE2NDAyNjcxMTksImV4cCI6MTY0MDM1MzUxOX0.T8KXORCLPgUIkuq9rlZrLkFtLxMT-NJc3c9GC_HTr2c",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "/admin",
+			"item": [
+				{
+					"name": "/team",
+					"item": [
+						{
+							"name": "/team_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/team/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"team",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Team ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/10",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"10"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 12:23:08 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/2",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4b-Q5lhsZl9McokJhd3XPXilZtCl+k\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 12:23:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": 2,\n        \"team_name\": \"Sympathetic Cats\",\n        \"manager_id\": 1,\n        \"visible\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/team_id/members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/team/7/members",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"team",
+										"7",
+										"members"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Team ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/1/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"1",
+												"members"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:04:06 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "200 OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/7/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"7",
+												"members"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "61"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3d-iHpq5TndNue+RlgHVhU0Aift26s\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:04:21 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team_members\": [\n        {\n            \"user_id\": 1\n        },\n        {\n            \"user_id\": 5\n        },\n        {\n            \"user_id\": 30\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "/delete/team_id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/team/delete/7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"team",
+										"delete",
+										"7"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Team ID",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/delete/1000",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"delete",
+												"1000"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:05:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "Successfully Deleted",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/delete/7",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"delete",
+												"7"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "19"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"13-s0DRvBGSUIhWijWj+iI3PPHXHnE\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:06:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": \"7\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/accept/team_id",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/team/accept/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"team",
+										"accept",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Team ID",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/accept/-1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"accept",
+												"-1"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 12:28:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "Successfully Accepted",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/accept/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"accept",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "71"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"47-I/HOOo+pw42Ga6GsgoDEAhD/4W8\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 12:30:26 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": 3,\n        \"team_name\": \"Night Robots\",\n        \"manager_id\": 1,\n        \"visible\": 1\n    }\n}"
+								},
+								{
+									"name": "Already Active",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/team/accept/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"team",
+												"accept",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "34"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"22-f/oC3aGcOlcfrZXaPOLUlMSBg+A\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 12:34:17 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team is already active\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/tournaments",
+					"item": [
+						{
+							"name": "/id",
+							"item": [
+								{
+									"name": "/tournament_id/matchups",
+									"item": [
+										{
+											"name": "/addToFirstStage",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"team1_id\": \"16\",\r\n    \"team2_id\": \"15\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 3\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/4/matchups/addToFirstStage",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"4",
+														"matchups",
+														"addToFirstStage"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Empty Body",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "73"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"49-8jqXB6ltaZ3nSeHpkuxPuymS4KI\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:22:51 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_id, team2_id, date, order_position fields are requiered\"\n}"
+												},
+												{
+													"name": "Team Not A Member of Tournament",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"15\",\r\n    \"team2_id\": \"10\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 4\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "66"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"42-tZ7DfUtxTwR34NToD8FZPOqB77s\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:26:22 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_id or/and team2_id is not a member of tournament\"\n}"
+												},
+												{
+													"name": "Incorrect Order Position",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"15\",\r\n    \"team2_id\": \"10\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 5\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "50"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"32-3ki3n1BjXtToSmdW+L/iCzRH3Vo\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:37:03 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"order position must be between 1 and 4\"\n}"
+												},
+												{
+													"name": "Order Position Is Occupied",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"16\",\r\n    \"team2_id\": \"15\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 2\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "83"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"53-ApBed2ssJRrm47cZFNFbN2lBCP8\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:39:36 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_id or/and team2_id is already at this stage or/and order position\"\n}"
+												},
+												{
+													"name": "200 OK - new matchup",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"16\",\r\n    \"team2_id\": \"15\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 3\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "134"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"86-xD9peH1+XMujYwpWhHqmB7c/Yns\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:42:16 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"matchup\": {\n        \"id\": 18,\n        \"tournament_id\": 4,\n        \"team1_id\": \"16\",\n        \"team2_id\": \"15\",\n        \"stage\": 1,\n        \"order_position\": 3,\n        \"date\": \"2022-01-17T17:30:00.000Z\"\n    }\n}"
+												},
+												{
+													"name": "Already In Table",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_id\": \"16\",\r\n    \"team2_id\": \"15\",\r\n    \"date\": \"2022-01-17 19:30:00\",\r\n    \"order_position\": 3\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/addToFirstStage",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"addToFirstStage"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "83"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"53-ApBed2ssJRrm47cZFNFbN2lBCP8\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:43:31 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_id or/and team2_id is already at this stage or/and order position\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/setWinner",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"team1_score\": 3,\r\n    \"team2_score\": 4,\r\n    \"matchup_id\": 2\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/4/matchups/setWinner",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"4",
+														"matchups",
+														"setWinner"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Empty Body",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/setWinner",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"setWinner"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "69"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"45-0nBZi8UR3+tqgwnHd4CAGta6V+I\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:44:43 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"team1_score, team2_score, matchup_id fields are requiered\"\n}"
+												},
+												{
+													"name": "Invalid Matchup ID",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_score\": 5,\r\n    \"team2_score\": 7,\r\n    \"matchup_id\": 30\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/setWinner",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"setWinner"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "29"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"1d-d+v04SdQslUSDllKVLwz+iprn14\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:51:19 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"matchup not found\"\n}"
+												},
+												{
+													"name": "Successfully Updated",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"team1_score\": 3,\r\n    \"team2_score\": 4,\r\n    \"matchup_id\": 2\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/setWinner",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"setWinner"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "181"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"b5-QsPQlOviJJy/ycpnJ7elMEsnnIA\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 22:07:09 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"matchup\": {\n        \"id\": 19,\n        \"tournament_id\": 4,\n        \"team1_id\": 8,\n        \"team2_id\": 11,\n        \"stage\": 2,\n        \"order_position\": 1,\n        \"date\": \"2022-01-19T13:30:00.000Z\",\n        \"team1_score\": null,\n        \"team2_score\": null,\n        \"winner\": null\n    }\n}"
+												}
+											]
+										},
+										{
+											"name": "/updateDate",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"matchup_id\": 19,\r\n    \"date\": \"2022-01-19 15:30:00\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/4/matchups/updateDate",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"4",
+														"matchups",
+														"updateDate"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Empty Body",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/2/matchups/updateDate",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"2",
+																"matchups",
+																"updateDate"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "49"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"31-YMNTzHegR15daD/Kyo93sK3lZjM\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:54:28 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"matchup_id, date fields are requiered\"\n}"
+												},
+												{
+													"name": "Invalid Tournament ID or user doesn't own it",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"matchup_id\": 19,\r\n    \"date\": \"2022-01-19 15:30:00\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/2/matchups/updateDate",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"2",
+																"matchups",
+																"updateDate"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "32"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:56:26 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"tournament not found\"\n}"
+												},
+												{
+													"name": "Invalid Matchup ID",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"matchup_id\": 30,\r\n    \"date\": \"2022-01-19 15:30:00\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/updateDate",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"updateDate"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "29"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"1d-d+v04SdQslUSDllKVLwz+iprn14\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:56:59 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"error\": \"matchup not found\"\n}"
+												},
+												{
+													"name": "200 OK - updated",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\r\n    \"matchup_id\": 19,\r\n    \"date\": \"2022-01-19 15:30:00\"\r\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{url}}/admin/tournaments/id/4/matchups/updateDate",
+															"host": [
+																"{{url}}"
+															],
+															"path": [
+																"admin",
+																"tournaments",
+																"id",
+																"4",
+																"matchups",
+																"updateDate"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "184"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"b8-4mTYWW+G24Kfxu+XaQyg46XN8uM\""
+														},
+														{
+															"key": "Date",
+															"value": "Wed, 22 Dec 2021 21:58:48 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"body": "{\n    \"matchup\": {\n        \"id\": 19,\n        \"tournament_id\": 4,\n        \"team1_id\": null,\n        \"team2_id\": 11,\n        \"stage\": 2,\n        \"order_position\": 1,\n        \"date\": \"2022-01-19T13:30:00.000Z\",\n        \"team1_score\": null,\n        \"team2_score\": null,\n        \"winner\": null\n    }\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/tournament_id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/id/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"id",
+												"3"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/1",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"1"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 14:56:10 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/3",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"3"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "162"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"a2-JUdskjp9r8lhMCtvlrZ+mV62uEE\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 14:56:22 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament\": {\n        \"id\": 3,\n        \"name\": \"IASA Winter Session 2021\",\n        \"manager_id\": 1,\n        \"date_start\": \"2021-12-20T00:00:00.000Z\",\n        \"date_end\": \"2021-12-30T23:59:59.000Z\",\n        \"visible\": 0\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "/tournament_id/members",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/id/3/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"id",
+												"3",
+												"members"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/1/members",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"1",
+														"members"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 14:58:10 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK - members",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/3/members",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"3",
+														"members"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "53"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"35-6XH8NpiLF5LYcEOCy6jQBfJxYG0\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 14:58:24 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament_members\": [\n        {\n            \"team_id\": 3\n        },\n        {\n            \"team_id\": 11\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "/tournament_id/matchups",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/id/4/matchups",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"id",
+												"4",
+												"matchups"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/10/matchups",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"10",
+														"matchups"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:10:47 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/admin/tournaments/id/4/matchups",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"admin",
+														"tournaments",
+														"id",
+														"4",
+														"matchups"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "778"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"30a-WvhPTQqBBRJD2XYEaYZlWrfKKP0\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 22:03:25 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament_matchups\": [\n        {\n            \"id\": 1,\n            \"team1_id\": 3,\n            \"team2_id\": 11,\n            \"stage\": 1,\n            \"order_position\": 2,\n            \"date\": \"2022-01-17T14:40:00.000Z\",\n            \"team1_score\": 5,\n            \"team2_score\": 7,\n            \"winner\": 11\n        },\n        {\n            \"id\": 2,\n            \"team1_id\": 2,\n            \"team2_id\": 8,\n            \"stage\": 1,\n            \"order_position\": 1,\n            \"date\": \"2022-01-17T15:30:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        },\n        {\n            \"id\": 5,\n            \"team1_id\": 14,\n            \"team2_id\": 17,\n            \"stage\": 1,\n            \"order_position\": 4,\n            \"date\": \"2022-01-17T17:30:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        },\n        {\n            \"id\": 18,\n            \"team1_id\": 16,\n            \"team2_id\": 15,\n            \"stage\": 1,\n            \"order_position\": 3,\n            \"date\": \"2022-01-17T17:30:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        },\n        {\n            \"id\": 19,\n            \"team1_id\": null,\n            \"team2_id\": 11,\n            \"stage\": 2,\n            \"order_position\": 1,\n            \"date\": \"2022-01-19T13:30:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        }\n    ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/page_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/tournaments/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"tournaments",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Page ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/dlaj",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"dlaj"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "31"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f-AgHr93YhM53vayllsCLgw2zwbSY\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 14:43:19 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"invalid page number\"\n}"
+								},
+								{
+									"name": "200 OK - inactive tournaments",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "323"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"143-4iqiOEqih2Pm+jP2fwqs7e7Z1Ro\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 14:43:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"tournaments\": [\n        {\n            \"id\": 3,\n            \"name\": \"IASA Winter Session 2021\",\n            \"manager_id\": 1,\n            \"date_start\": \"2021-12-20T00:00:00.000Z\",\n            \"date_end\": \"2021-12-30T23:59:59.000Z\",\n            \"visible\": 0\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Big Student Random Points Cup 2022\",\n            \"manager_id\": 1,\n            \"date_start\": \"2022-01-17T00:00:00.000Z\",\n            \"date_end\": \"2022-01-30T23:59:59.000Z\",\n            \"visible\": 0\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "/delete/tournament_id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/tournaments/delete/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"tournaments",
+										"delete",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Tournament ID",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/delete/tournament_id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"delete",
+												"tournament_id"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "32"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:12:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"tournament not found\"\n}"
+								},
+								{
+									"name": "Successfully Deleted",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/delete/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"delete",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "19"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"13-Nb5gQe7+r6OK2S/2lVmKQbN5B8I\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:17:06 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": \"3\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/accept/tournament_id",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/tournaments/accept/4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"tournaments",
+										"accept",
+										"4"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Tournament ID",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/accept/tournament_id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"accept",
+												"tournament_id"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "32"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:37:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"tournament not found\"\n}"
+								},
+								{
+									"name": "Successfully Acepted",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/accept/4",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"accept",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "172"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"ac-x7CB6WEOovclXyVDy/xGb3KSIs0\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:38:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"tournament\": {\n        \"id\": 4,\n        \"name\": \"Big Student Random Points Cup 2022\",\n        \"manager_id\": 1,\n        \"date_start\": \"2022-01-17T00:00:00.000Z\",\n        \"date_end\": \"2022-01-30T23:59:59.000Z\",\n        \"visible\": 1\n    }\n}"
+								},
+								{
+									"name": "Already Active",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/admin/tournaments/accept/4",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"admin",
+												"tournaments",
+												"accept",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "40"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"28-lLxp2X1nqpAy4Oe7syktLH7UTZ8\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:38:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"tournament is already active\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/teams/page_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/admin/teams/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"teams",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid Page ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/teams/-1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"teams",
+										"-1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-AgHr93YhM53vayllsCLgw2zwbSY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 12:21:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"invalid page number\"\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/admin/teams/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin",
+										"teams",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"91-mPXrkCxYw2nFTgWQ03eJgM2SOP4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 12:36:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"teams\": [\n        {\n            \"id\": 2,\n            \"team_name\": \"Sympathetic Cats\",\n            \"manager_id\": 1,\n            \"visible\": 0\n        },\n        {\n            \"id\": 7,\n            \"team_name\": \"Unique Team Name\",\n            \"manager_id\": 1,\n            \"visible\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOjQyLCJyb2xlX2lkIjoyLCJpYXQiOjE2NDAyNjcxMzUsImV4cCI6MTY0MDM1MzUzNX0.99z8poewHpveusTRsjGF_OARDEnMIIiyPKkrLcewMAU",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "/",
+			"item": [
+				{
+					"name": "/team",
+					"item": [
+						{
+							"name": "/team_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/team/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"team",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Team ID or team isn't active",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/team/2",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"team",
+												"2"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:33:21 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "Active Team Info",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/team/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"team",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "59"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3b-26YiGDg3G0TTemwoJJZNByFKd3k\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:34:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team\": {\n        \"id\": 3,\n        \"team_name\": \"Night Robots\",\n        \"manager_id\": 1\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/team_id/members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/team/3/members",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"team",
+										"3",
+										"members"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Team ID or team isn't active",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/team/1/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"team",
+												"1",
+												"members"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-sdNUQqrn2RKPwvTRyVudE53llKc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:38:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"team not found\"\n}"
+								},
+								{
+									"name": "Active Team Members",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/team/3/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"team",
+												"3",
+												"members"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "48"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"30-NsHtRJBOLiV6HpZLkuMnx9qDmzw\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 13:38:32 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"team_members\": [\n        {\n            \"user_id\": 23\n        },\n        {\n            \"user_id\": 24\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/tournaments",
+					"item": [
+						{
+							"name": "/id",
+							"item": [
+								{
+									"name": "/tournament_id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/tournaments/id/4",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"tournaments",
+												"id",
+												"4"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID  or user doesn't own it",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/tournaments/id/3",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"tournaments",
+														"id",
+														"3"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:20:22 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/tournaments/id/4",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"tournaments",
+														"id",
+														"4"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "160"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"a0-f3wLjrLiydeeLPcmpvvKoLAk/wU\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 22:01:53 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament\": {\n        \"id\": 4,\n        \"name\": \"Big Student Random Points Cup 2022\",\n        \"manager_id\": 1,\n        \"date_start\": \"2022-01-17T00:00:00.000Z\",\n        \"date_end\": \"2022-01-30T23:59:59.000Z\"\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "/tournament_id/members",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/id/4/members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"id",
+												"4",
+												"members"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID  or user doesn't own it",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/3/members",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"3",
+														"members"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:21:03 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK - members",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/4/members",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"4",
+														"members"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "53"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"35-6XH8NpiLF5LYcEOCy6jQBfJxYG0\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:21:23 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament_members\": [\n        {\n            \"team_id\": 3\n        },\n        {\n            \"team_id\": 11\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "/tournament_id/matchups",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/tournaments/id/4/matchups",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"tournaments",
+												"id",
+												"4",
+												"matchups"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Invalid Tournament ID or user doesn't own it",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/10/matchups",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"10",
+														"matchups"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "32"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"20-Sr9zAB7CVlk5G/gL+hIzyaWB+zM\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 15:22:13 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"error\": \"tournament not found\"\n}"
+										},
+										{
+											"name": "200 OK - matchups",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/user/tournaments/id/4/matchups",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"user",
+														"tournaments",
+														"id",
+														"4",
+														"matchups"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "X-Powered-By",
+													"value": "Express"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "478"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"1de-u/zi4Sdyupw9PZNYxEGQoI7m3xo\""
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 22 Dec 2021 21:21:04 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"tournament_matchups\": [\n        {\n            \"id\": 1,\n            \"team1_id\": 3,\n            \"team2_id\": 11,\n            \"stage\": 1,\n            \"order_position\": 2,\n            \"date\": \"2022-01-17T14:40:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        },\n        {\n            \"id\": 2,\n            \"team1_id\": 2,\n            \"team2_id\": 8,\n            \"stage\": 1,\n            \"order_position\": 1,\n            \"date\": \"2022-01-17T15:30:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        },\n        {\n            \"id\": 5,\n            \"team1_id\": 14,\n            \"team2_id\": 17,\n            \"stage\": 1,\n            \"order_position\": 4,\n            \"date\": \"2022-01-17T17:30:00.000Z\",\n            \"team1_score\": null,\n            \"team2_score\": null,\n            \"winner\": null\n        }\n    ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/page_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/tournaments/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"tournaments",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid Page ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/tournaments/asas",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"tournaments",
+												"asas"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "31"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f-AgHr93YhM53vayllsCLgw2zwbSY\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:36:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": \"invalid page number\"\n}"
+								},
+								{
+									"name": "200 OK - Active Tournaments",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/tournaments/",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"tournaments",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "175"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"af-obkw8H4dmSbdIrAT49WwYrHbb0Q\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 22 Dec 2021 15:38:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"tournaments\": [\n        {\n            \"id\": 4,\n            \"name\": \"Big Student Random Points Cup 2022\",\n            \"manager_id\": 1,\n            \"date_start\": \"2022-01-17T00:00:00.000Z\",\n            \"date_end\": \"2022-01-30T23:59:59.000Z\",\n            \"visible\": 1\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/teams/page_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/teams/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"teams",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Empty Page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/teams/555",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"teams",
+										"555"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "12"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c-vOuNE503+703bJg299yx1Azn/gU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 13:30:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"teams\": []\n}"
+						},
+						{
+							"name": "Invalid Page ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/teams/jsaff;",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"teams",
+										"jsaff;"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-AgHr93YhM53vayllsCLgw2zwbSY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 13:31:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"invalid page number\"\n}"
+						},
+						{
+							"name": "200 OK - active teams",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/teams/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"teams",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-lo5c0jdoQWSkntG1MHrQw9EvmKg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 Dec 2021 13:31:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"teams\": [\n        {\n            \"id\": 3,\n            \"team_name\": \"Night Robots\",\n            \"manager_id\": 1\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5000"
+		}
+	]
+}
